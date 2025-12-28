@@ -44,12 +44,11 @@
           @dragend="onDragEndNative"
         >
           <slot name="video" :video="displayVideoList[index]" :index="index">
-            <!-- 默认占位符 -->
-            <div class="video-placeholder" v-if="!displayVideoList[index]">
+            <!-- 默认占位符：始终显示占位（除非用户提供 slot） -->
+            <div class="video-placeholder">
               <!-- 计算该位置在视觉顺序中的索引 -->
               <div class="placeholder-number">{{ getPlaceholderLabel(visualOrder.indexOf(index)) }}</div>
             </div>
-            <div v-else style="width:100%;height:100%"></div>
           </slot>
         </div>
       </div>
@@ -118,22 +117,40 @@ const allLayouts = computed(() => {
   return getAllLayoutTypes()
 })
 
-// 视频列表（可拖拽）- 使用 shallowRef 优化性能
-const videoItems = shallowRef<VideoItem[]>([...props.videos])
+// 内部槽位（slots）表示每个布局位置上绑定的视频或 undefined
+const videoItems = shallowRef<Array<VideoItem | undefined>>([])
+
+// Helper: sync props.videos -> videoItems slots of length maxVideos
+function syncVideoSlots(newVideos?: VideoItem[]) {
+  const source = Array.isArray(newVideos) ? newVideos : props.videos || []
+  const slotsCount = maxVideos.value
+  const idToLabel: Record<string | number, number> = {}
+  // preserve existing labels
+  videoItems.value.forEach((it, idx) => {
+    if (it && (it as any).id !== undefined) idToLabel[(it as any).id] = (it as any).__labelNumber ?? (idx + 1)
+  })
+
+  const newSlots: Array<VideoItem | undefined> = Array.from({ length: slotsCount }).map((_, i) => {
+    const v = source[i]
+    if (v) {
+      const label = idToLabel[(v as any).id] ?? (v as any).__labelNumber ?? (i + 1)
+      return { ...(v as any), __labelNumber: label } as VideoItem
+    }
+    return undefined
+  })
+  videoItems.value = newSlots
+}
+
+// 注意：不要在函数定义位置立即同步 slots，因为后续有依赖项（如 maxVideos）在 setup 中晚些声明。
+// 初始同步将在依赖声明完成后调用。
 
 // 监听外部传入的视频变化（使用浅比较，避免深度监听导致的循环）
 watch(() => props.videos, (newVideos) => {
-  // 边界检查：确保 newVideos 是有效数组
   if (!Array.isArray(newVideos)) {
     console.warn('[VideoGridLayout] Invalid videos prop, expected array')
     return
   }
-  
-  // 比较数组长度和每个元素的 id，避免不必要的更新
-  if (videoItems.value.length !== newVideos.length ||
-      videoItems.value.some((item, index) => item.id !== newVideos[index]?.id)) {
-    videoItems.value = [...newVideos]
-  }
+  syncVideoSlots(newVideos)
 }, { flush: 'post' })
 
 // 监听视频列表变化，通知父组件（只在拖拽时触发，避免循环）
@@ -161,7 +178,17 @@ const layoutPositions = computed(() => getLayoutPositions(currentLayout.value))
 const maxVideos = computed(() => layoutConfig.value?.count || 4)
 
 // 实际显示的视频列表（根据布局限制数量）
-const displayVideoList = computed(() => videoItems.value.slice(0, maxVideos.value))
+const displayVideoList = computed(() => {
+  return videoItems.value.slice(0, maxVideos.value).map(v => v as VideoItem).filter(Boolean) as VideoItem[]
+})
+
+// 初始化 slots（在 maxVideos 等依赖被定义之后调用）
+syncVideoSlots(props.videos)
+
+// 当布局变化（maxVideos）时也需要重新同步 slots 长度
+watch(maxVideos, () => {
+  syncVideoSlots(props.videos)
+})
 
 // 视觉顺序映射：按 row then col 排序，得到视觉索引 -> 布局位置索引
 const visualOrder = computed(() => {
@@ -179,6 +206,10 @@ const visualOrder = computed(() => {
 const dragFromIndex = ref<number>(-1)
 const dragOverIndex = ref<number>(-1)
 const dragImageElement = shallowRef<HTMLElement | null>(null)
+// 自定义拖拽预览元素（用于按目标大小缩放）
+const customPreviewEl = shallowRef<HTMLElement | null>(null)
+let mouseMoveHandler: ((e: MouseEvent) => void) | null = null
+let dragMoveHandler: ((e: DragEvent) => void) | null = null
 
 
 // 网格样式
@@ -207,9 +238,6 @@ function getPlaceholderLabel(index: number) {
   // index here is视觉索引 (0-based). 映射到实际位置索引：
   const visualIndex = index
   const posIndex = visualOrder.value[visualIndex]
-  const video = displayVideoList.value[posIndex]
-  if (video) return ''
-
   if (Array.isArray(props.placeholders) && props.placeholders[posIndex] !== undefined) {
     return String(props.placeholders[posIndex])
   }
@@ -264,6 +292,22 @@ function cleanupDragImage() {
     }
     dragImageElement.value = null
   }
+  if (customPreviewEl.value && document.body.contains(customPreviewEl.value)) {
+    try {
+      document.body.removeChild(customPreviewEl.value)
+    } catch (error) {
+      // ignore
+    }
+    customPreviewEl.value = null
+  }
+  if (mouseMoveHandler) {
+    document.removeEventListener('mousemove', mouseMoveHandler)
+    mouseMoveHandler = null
+  }
+  if (dragMoveHandler) {
+    document.removeEventListener('drag', dragMoveHandler)
+    dragMoveHandler = null
+  }
 }
 
 // 原生拖拽实现（实现交换逻辑）
@@ -284,31 +328,81 @@ function onDragStart(evt: DragEvent, index: number) {
   
   if (videoItem) {
     try {
-      // 清理之前可能残留的拖拽图像
+      // 清理之前可能残留的拖拽图像或自定义预览
       cleanupDragImage()
-      
-      // 创建拖拽预览图像
-      const dragImage = videoItem.cloneNode(true) as HTMLElement
-      dragImage.style.width = `${videoItem.offsetWidth}px`
-      dragImage.style.height = `${videoItem.offsetHeight}px`
-      dragImage.style.opacity = DRAG_IMAGE_OPACITY
-      dragImage.style.position = 'absolute'
-      dragImage.style.top = '-9999px'
-      dragImage.style.pointerEvents = 'none'
-      document.body.appendChild(dragImage)
-      dragImageElement.value = dragImage
-      
-      // 设置拖拽预览图像
-      evt.dataTransfer.setDragImage(dragImage, videoItem.offsetWidth / 2, videoItem.offsetHeight / 2)
-      
-      // 延迟移除预览图像
-      setTimeout(() => {
-        cleanupDragImage()
-      }, 100)
-      
-      // 添加半透明效果
+
+      // 完全禁用原生拖拽预览和行为
+      if (evt.dataTransfer) {
+        evt.dataTransfer.effectAllowed = 'move'
+        // 使用空的Image完全禁用原生拖拽预览
+        const img = new Image()
+        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+        evt.dataTransfer.setDragImage(img, 0, 0)
+      }
+
+      // 创建自定义预览元素（克隆）
+      const preview = videoItem.cloneNode(true) as HTMLElement
+
+      // 清理预览元素，移除可能导致问题的动态内容
+      const progressBars = preview.querySelectorAll('.progress-bar, .play-button')
+      progressBars.forEach(bar => bar.remove())
+
+      // 确保所有可能有动画的元素都被清理
+      const animatedElements = preview.querySelectorAll('[style*="transition"], [style*="animation"], .video-icon')
+      animatedElements.forEach(el => {
+        try {
+          (el as HTMLElement).style.transition = 'none'
+          ;(el as HTMLElement).style.animation = 'none'
+        } catch (err) {
+          // ignore
+        }
+      })
+
+      preview.style.position = 'fixed'
+      preview.style.margin = '0'
+      preview.style.pointerEvents = 'none'
+      preview.style.opacity = DRAG_IMAGE_OPACITY
+      preview.style.zIndex = '9999'
+
+      // 先挂载以便读取尺寸，再用鼠标居中计算位置（避免使用 transform 导致的 0,0 闪现）
+      document.body.appendChild(preview)
+      customPreviewEl.value = preview
+
+      try {
+        const srcRect = videoItem.getBoundingClientRect()
+        preview.style.width = `${srcRect.width}px`
+        preview.style.height = `${srcRect.height}px`
+      } catch (e) {
+        // ignore
+      }
+
+      // 带随鼠标移动的 handler：用尺寸计算中心对齐
+      mouseMoveHandler = (e: MouseEvent) => {
+        if (!customPreviewEl.value) return
+        const pw = customPreviewEl.value.offsetWidth || 0
+        const ph = customPreviewEl.value.offsetHeight || 0
+        const left = Math.max(0, e.clientX - pw / 2)
+        const top = Math.max(0, e.clientY - ph / 2)
+        customPreviewEl.value.style.left = `${left}px`
+        customPreviewEl.value.style.top = `${top}px`
+      }
+      document.addEventListener('mousemove', mouseMoveHandler)
+      // 有些浏览器在原生 drag 操作期间不会派发 mousemove，可同时监听 drag 事件以保证预览跟随
+      dragMoveHandler = (e: DragEvent) => {
+        if (!customPreviewEl.value) return
+        const pw = customPreviewEl.value.offsetWidth || 0
+        const ph = customPreviewEl.value.offsetHeight || 0
+        const left = Math.max(0, (e.clientX || 0) - pw / 2)
+        const top = Math.max(0, (e.clientY || 0) - ph / 2)
+        customPreviewEl.value.style.left = `${left}px`
+        customPreviewEl.value.style.top = `${top}px`
+      }
+      document.addEventListener('drag', dragMoveHandler)
+
+      // 添加拖拽开始的视觉反馈到原元素
       videoItem.style.opacity = String(DRAG_OPACITY)
       videoItem.style.cursor = DRAG_CURSOR
+      videoItem.style.borderColor = '#ff6b6b' // 红色边框表示正在拖拽
     } catch (error) {
       console.error('[VideoGridLayout] Drag start error:', error)
       cleanupDragImage()
@@ -319,40 +413,49 @@ function onDragStart(evt: DragEvent, index: number) {
 function onDrop(evt: DragEvent, toIndex: number) {
   evt.preventDefault()
   evt.stopPropagation()
-  
+
   const fromIndex = dragFromIndex.value
-  
+
   // 边界检查
   if (fromIndex === -1 || fromIndex === toIndex) {
     dragFromIndex.value = -1
     return
   }
-  
-  if (toIndex < 0 || toIndex >= videoItems.value.length) {
+
+  if (toIndex < 0 || toIndex >= layoutPositions.value.length) {
     console.warn('[VideoGridLayout] Invalid drop index:', toIndex)
     dragFromIndex.value = -1
     return
   }
-  
+
   try {
-    // 交换两个视频的位置
-    const videoA = videoItems.value[fromIndex]
-    const videoB = videoItems.value[toIndex]
-    
-    if (videoA && videoB) {
-      // 标记为内部更新，避免触发 watch
-      isInternalUpdate = true
-      const temp = [...videoItems.value]
-      temp[fromIndex] = videoB
-      temp[toIndex] = videoA
-      videoItems.value = temp
-      
-      // 延迟重置标志，确保 watch 能正常触发
+    // 给目标位置添加视觉反馈
+    const targetElement = evt.currentTarget as HTMLElement
+    if (targetElement) {
+      targetElement.style.backgroundColor = 'rgba(66, 184, 131, 0.3)'
+      targetElement.style.borderColor = '#42b883'
+      // 短暂延迟后恢复
       setTimeout(() => {
-        isInternalUpdate = false
-        emit('videosChange', videoItems.value)
-      }, 0)
+        targetElement.style.backgroundColor = ''
+        targetElement.style.borderColor = ''
+      }, 200)
     }
+
+    // 交换两个位置上的视频（允许目标位置为空）
+    const temp = [...videoItems.value]
+    const videoA = temp[fromIndex]
+    const videoB = temp[toIndex]
+    temp[fromIndex] = videoB
+    temp[toIndex] = videoA
+    // 标记为内部更新，避免触发外部 watch 回流
+    isInternalUpdate = true
+    videoItems.value = temp
+
+    // 延迟重置标志并通知父组件当前视频顺序（以实际存在的视频数组为准）
+    setTimeout(() => {
+      isInternalUpdate = false
+      emit('videosChange', videoItems.value.filter(Boolean) as VideoItem[])
+    }, 0)
   } catch (error) {
     console.error('[VideoGridLayout] Drop error:', error)
   } finally {
@@ -365,6 +468,7 @@ function onDragEnter(evt: DragEvent, index: number) {
   evt.preventDefault()
   if (dragFromIndex.value !== -1 && dragFromIndex.value !== index) {
     dragOverIndex.value = index
+    // 不再调整预览大小，保持原始大小跟随鼠标
   }
 }
 
@@ -386,12 +490,13 @@ function onDragEndNative(evt: DragEvent) {
   const videoItem = target.closest('.video-item') as HTMLElement
   
   if (videoItem) {
-    // 恢复透明度和光标
+    // 恢复透明度、光标和边框
     videoItem.style.opacity = '1'
     videoItem.style.cursor = 'move'
+    videoItem.style.borderColor = ''
   }
   
-  // 清理拖拽图像
+  // 清理拖拽图像 / 自定义预览
   cleanupDragImage()
   
   dragFromIndex.value = -1
@@ -494,19 +599,15 @@ onBeforeUnmount(() => {
   border-radius: 4px;
   overflow: hidden;
   cursor: move;
-  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   min-height: 0;
   min-width: 0;
   user-select: none;
   -webkit-user-drag: element;
-  will-change: transform;
 }
 
 .video-item.dragging {
   opacity: 0.5;
   cursor: grabbing;
-  transform: scale(0.98);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .video-item:hover {

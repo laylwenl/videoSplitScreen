@@ -1,5 +1,5 @@
-import { defineComponent as N, createElementBlock as c, openBlock as i, createCommentVNode as P, createElementVNode as d, createStaticVNode as k, ref as $, watch as I, computed as p, shallowRef as T, onBeforeUnmount as et, normalizeStyle as _, Fragment as O, renderList as E, unref as A, normalizeClass as M, createVNode as rt, toDisplayString as R, withModifiers as at, renderSlot as lt } from "vue";
-const g = {
+import { defineComponent as W, createElementBlock as i, openBlock as s, createCommentVNode as X, createElementVNode as d, createStaticVNode as S, ref as O, watch as I, computed as g, shallowRef as R, onBeforeUnmount as dt, normalizeStyle as N, Fragment as U, renderList as z, unref as P, normalizeClass as j, createVNode as ht, toDisplayString as q, withModifiers as wt, renderSlot as ut } from "vue";
+const C = {
   1: {
     type: "1",
     label: "1分屏",
@@ -77,11 +77,11 @@ const g = {
     cols: 4,
     rows: 4
   }
-}, B = {};
-function nt(l) {
-  if (B[l])
-    return B[l];
-  const o = {
+}, H = {};
+function pt(c) {
+  if (H[c])
+    return H[c];
+  const e = {
     1: [
       { col: 1, colSpan: 1, row: 1, rowSpan: 1 }
     ],
@@ -183,64 +183,64 @@ function nt(l) {
       { col: 3, colSpan: 1, row: 4, rowSpan: 1 },
       { col: 4, colSpan: 1, row: 4, rowSpan: 1 }
     ]
-  }[l] || [];
-  return o.length > 0 && (B[l] = o), o;
+  }[c] || [];
+  return e.length > 0 && (H[c] = e), e;
 }
-function ct() {
-  return Object.keys(g);
+function vt() {
+  return Object.keys(C);
 }
-const it = { class: "layout-icon" }, dt = {
+const yt = { class: "layout-icon" }, gt = {
   key: 0,
   viewBox: "0 0 48 48",
   fill: "none"
-}, st = {
+}, kt = {
   key: 1,
   viewBox: "0 0 48 48",
   fill: "none"
-}, ht = {
+}, St = {
   key: 2,
   viewBox: "0 0 48 48",
   fill: "none"
-}, wt = {
+}, ft = {
   key: 3,
   viewBox: "0 0 48 48",
   fill: "none"
-}, ut = {
+}, Ct = {
   key: 4,
   viewBox: "0 0 48 48",
   fill: "none"
-}, pt = {
+}, xt = {
   key: 5,
   viewBox: "0 0 48 48",
   fill: "none"
-}, vt = {
+}, mt = {
   key: 6,
   viewBox: "0 0 48 48",
   fill: "none"
-}, yt = {
+}, bt = {
   key: 7,
   viewBox: "0 0 48 48",
   fill: "none"
-}, kt = {
+}, At = {
   key: 8,
   viewBox: "0 0 54 48",
   fill: "none"
-}, St = {
+}, Lt = {
   key: 9,
   viewBox: "0 0 48 48",
   fill: "none"
-}, gt = {
+}, Dt = {
   key: 10,
   viewBox: "0 0 48 48",
   fill: "none"
-}, Ct = /* @__PURE__ */ N({
+}, $t = /* @__PURE__ */ W({
   __name: "VideoLayoutIcon",
   props: {
     type: {}
   },
-  setup(l) {
-    return (v, o) => (i(), c("div", it, [
-      l.type === "1" ? (i(), c("svg", dt, [...o[0] || (o[0] = [
+  setup(c) {
+    return (k, e) => (s(), i("div", yt, [
+      c.type === "1" ? (s(), i("svg", gt, [...e[0] || (e[0] = [
         d("rect", {
           x: "4",
           y: "4",
@@ -249,7 +249,7 @@ const it = { class: "layout-icon" }, dt = {
           stroke: "currentColor",
           "stroke-width": "2"
         }, null, -1)
-      ])])) : l.type === "2" ? (i(), c("svg", st, [...o[1] || (o[1] = [
+      ])])) : c.type === "2" ? (s(), i("svg", kt, [...e[1] || (e[1] = [
         d("rect", {
           x: "4",
           y: "4",
@@ -266,7 +266,7 @@ const it = { class: "layout-icon" }, dt = {
           stroke: "currentColor",
           "stroke-width": "1.5"
         }, null, -1)
-      ])])) : l.type === "3" ? (i(), c("svg", ht, [...o[2] || (o[2] = [
+      ])])) : c.type === "3" ? (s(), i("svg", St, [...e[2] || (e[2] = [
         d("rect", {
           x: "4",
           y: "4",
@@ -291,7 +291,7 @@ const it = { class: "layout-icon" }, dt = {
           stroke: "currentColor",
           "stroke-width": "1.5"
         }, null, -1)
-      ])])) : l.type === "4" ? (i(), c("svg", wt, [...o[3] || (o[3] = [
+      ])])) : c.type === "4" ? (s(), i("svg", ft, [...e[3] || (e[3] = [
         d("rect", {
           x: "4",
           y: "4",
@@ -324,44 +324,38 @@ const it = { class: "layout-icon" }, dt = {
           stroke: "currentColor",
           "stroke-width": "1.5"
         }, null, -1)
-      ])])) : l.type === "6" ? (i(), c("svg", ut, [...o[4] || (o[4] = [
-        k('<rect x="3" y="4" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="4" width="12" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="4" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="3" y="24" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="24" width="12" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="24" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect>', 6)
-      ])])) : l.type === "7" ? (i(), c("svg", pt, [...o[5] || (o[5] = [
-        k('<rect x="4" y="4" width="19" height="19" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="25" y="4" width="19" height="19" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="4" y="25" width="19" height="19" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="25" y="25" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="35" y="25" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="25" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="35" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 7)
-      ])])) : l.type === "8" ? (i(), c("svg", vt, [...o[6] || (o[6] = [
-        k('<rect x="4" y="4" width="28" height="29" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="34" y="4" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="14.5" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="24.5" width="10" height="8.5" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="14" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="35" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 8)
-      ])])) : l.type === "9" ? (i(), c("svg", yt, [...o[7] || (o[7] = [
-        k('<rect x="4" y="4" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="4" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="4" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="4" y="18" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="18" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="18" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="4" y="32" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="32" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="32" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect>', 9)
-      ])])) : l.type === "10" ? (i(), c("svg", kt, [...o[8] || (o[8] = [
-        k('<rect x="3" y="4" width="36" height="29" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="41" y="4" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="41" y="14.5" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="41" y="24.5" width="10" height="8.5" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="3" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="11" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="19" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="27" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="35" y="35" width="6" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="42" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 10)
-      ])])) : l.type === "13" ? (i(), c("svg", St, [...o[9] || (o[9] = [
-        k('<rect x="4" y="4" width="18" height="18" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="24" y="4" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="4" width="10" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="14" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="14" width="10" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="24" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="14" y="24" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="24" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="24" width="10" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="34" width="8" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="14" y="34" width="8" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="34" width="8" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="34" width="10" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 13)
-      ])])) : l.type === "16" ? (i(), c("svg", gt, [...o[10] || (o[10] = [
-        k('<rect x="4" y="4" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="4" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="4" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="4" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="15" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="15" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="15" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="15" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="26" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="26" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="26" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="26" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="37" width="9" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="37" width="9" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="37" width="9" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="37" width="7" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 16)
-      ])])) : P("", !0)
+      ])])) : c.type === "6" ? (s(), i("svg", Ct, [...e[4] || (e[4] = [
+        S('<rect x="3" y="4" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="4" width="12" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="4" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="3" y="24" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="24" width="12" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="24" width="13" height="18" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect>', 6)
+      ])])) : c.type === "7" ? (s(), i("svg", xt, [...e[5] || (e[5] = [
+        S('<rect x="4" y="4" width="19" height="19" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="25" y="4" width="19" height="19" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="4" y="25" width="19" height="19" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="25" y="25" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="35" y="25" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="25" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="35" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 7)
+      ])])) : c.type === "8" ? (s(), i("svg", mt, [...e[6] || (e[6] = [
+        S('<rect x="4" y="4" width="28" height="29" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="34" y="4" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="14.5" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="24.5" width="10" height="8.5" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="14" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="35" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 8)
+      ])])) : c.type === "9" ? (s(), i("svg", bt, [...e[7] || (e[7] = [
+        S('<rect x="4" y="4" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="4" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="4" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="4" y="18" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="18" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="18" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="4" y="32" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="18" y="32" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect><rect x="32" y="32" width="12" height="12" stroke="currentColor" stroke-width="1.5" data-v-31e0404d></rect>', 9)
+      ])])) : c.type === "10" ? (s(), i("svg", At, [...e[8] || (e[8] = [
+        S('<rect x="3" y="4" width="36" height="29" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="41" y="4" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="41" y="14.5" width="10" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="41" y="24.5" width="10" height="8.5" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="3" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="11" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="19" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="27" y="35" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="35" y="35" width="6" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="42" y="35" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 10)
+      ])])) : c.type === "13" ? (s(), i("svg", Lt, [...e[9] || (e[9] = [
+        S('<rect x="4" y="4" width="18" height="18" stroke="currentColor" stroke-width="2" data-v-31e0404d></rect><rect x="24" y="4" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="4" width="10" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="14" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="14" width="10" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="24" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="14" y="24" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="24" width="8" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="24" width="10" height="8" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="34" width="8" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="14" y="34" width="8" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="24" y="34" width="8" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="34" y="34" width="10" height="10" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 13)
+      ])])) : c.type === "16" ? (s(), i("svg", Dt, [...e[10] || (e[10] = [
+        S('<rect x="4" y="4" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="4" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="4" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="4" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="15" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="15" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="15" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="15" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="26" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="26" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="26" width="9" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="26" width="7" height="9" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="4" y="37" width="9" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="15" y="37" width="9" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="26" y="37" width="9" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect><rect x="37" y="37" width="7" height="7" stroke="currentColor" stroke-width="1.2" data-v-31e0404d></rect>', 16)
+      ])])) : X("", !0)
     ]));
   }
-}), F = (l, v) => {
-  const o = l.__vccOpts || l;
-  for (const [C, h] of v)
-    o[C] = h;
-  return o;
-}, U = /* @__PURE__ */ F(Ct, [["__scopeId", "data-v-31e0404d"]]), xt = {
+}), Q = (c, k) => {
+  const e = c.__vccOpts || c;
+  for (const [x, p] of k)
+    e[x] = p;
+  return e;
+}, J = /* @__PURE__ */ Q($t, [["__scopeId", "data-v-31e0404d"]]), Bt = {
   key: 0,
   class: "layout-toolbar",
   role: "toolbar",
   "aria-label": "布局切换工具栏"
-}, ft = { class: "layout-buttons" }, mt = ["onClick", "title", "aria-label", "aria-pressed"], bt = { class: "layout-label" }, Dt = {
+}, It = { class: "layout-buttons" }, _t = ["onClick", "title", "aria-label", "aria-pressed"], Et = { class: "layout-label" }, Vt = {
   class: "video-grid-container",
   role: "region",
   "aria-label": "视频网格"
-}, Lt = ["aria-label", "onDragstart", "onDragenter", "onDragleave", "onDrop"], $t = {
-  key: 0,
-  class: "video-placeholder"
-}, It = { class: "placeholder-number" }, _t = {
-  key: 1,
-  style: { width: "100%", height: "100%" }
-}, At = 0.5, Bt = "grabbing", Vt = "0.8", Gt = /* @__PURE__ */ N({
+}, Tt = ["aria-label", "onDragstart", "onDragenter", "onDragleave", "onDrop"], Gt = { class: "video-placeholder" }, Mt = { class: "placeholder-number" }, Ot = 0.5, Rt = "grabbing", Nt = "0.8", Pt = /* @__PURE__ */ W({
   __name: "VideoGridLayout",
   props: {
     videos: {},
@@ -374,227 +368,272 @@ const it = { class: "layout-icon" }, dt = {
     placeholders: {}
   },
   emits: ["layoutChange", "videosChange"],
-  setup(l, { emit: v }) {
-    const o = l, C = v, h = $(o.layout);
-    I(() => o.layout, (t) => {
-      h.value = t;
+  setup(c, { emit: k }) {
+    const e = c, x = k, p = O(e.layout);
+    I(() => e.layout, (t) => {
+      p.value = t;
     });
-    const Y = p(() => o.availableLayouts && o.availableLayouts.length > 0 ? o.availableLayouts : ct()), s = T([...o.videos]);
-    I(() => o.videos, (t) => {
+    const K = g(() => e.availableLayouts && e.availableLayouts.length > 0 ? e.availableLayouts : vt()), y = R([]);
+    function _(t) {
+      const o = Array.isArray(t) ? t : e.videos || [], a = V.value, r = {};
+      y.value.forEach((w, u) => {
+        w && w.id !== void 0 && (r[w.id] = w.__labelNumber ?? u + 1);
+      });
+      const n = Array.from({ length: a }).map((w, u) => {
+        const l = o[u];
+        if (l) {
+          const f = r[l.id] ?? l.__labelNumber ?? u + 1;
+          return { ...l, __labelNumber: f };
+        }
+      });
+      y.value = n;
+    }
+    I(() => e.videos, (t) => {
       if (!Array.isArray(t)) {
         console.warn("[VideoGridLayout] Invalid videos prop, expected array");
         return;
       }
-      (s.value.length !== t.length || s.value.some((e, a) => {
-        var r;
-        return e.id !== ((r = t[a]) == null ? void 0 : r.id);
-      })) && (s.value = [...t]);
+      _(t);
     }, { flush: "post" });
-    let D = !1;
-    I(s, (t) => {
-      !D && Array.isArray(t) && C("videosChange", t);
+    let E = !1;
+    I(y, (t) => {
+      !E && Array.isArray(t) && x("videosChange", t);
     });
-    const V = p(() => {
-      const t = g[h.value];
-      return t || (console.warn(`[VideoGridLayout] Invalid layout type: ${h.value}, fallback to '4'`), g[4]);
-    }), b = p(() => nt(h.value)), j = p(() => {
+    const Y = g(() => {
+      const t = C[p.value];
+      return t || (console.warn(`[VideoGridLayout] Invalid layout type: ${p.value}, fallback to '4'`), C[4]);
+    }), m = g(() => pt(p.value)), V = g(() => {
       var t;
-      return ((t = V.value) == null ? void 0 : t.count) || 4;
-    }), S = p(() => s.value.slice(0, j.value)), G = p(() => {
-      const t = b.value.map((e, a) => ({ p: e, idx: a }));
-      return t.sort((e, a) => e.p.row === a.p.row ? (e.p.col || 0) - (a.p.col || 0) : (e.p.row || 0) - (a.p.row || 0)), t.map((e) => e.idx);
-    }), w = $(-1), x = $(-1), f = T(null), z = p(() => {
-      const t = V.value;
+      return ((t = Y.value) == null ? void 0 : t.count) || 4;
+    }), D = g(() => y.value.slice(0, V.value).map((t) => t).filter(Boolean));
+    _(e.videos), I(V, () => {
+      _(e.videos);
+    });
+    const F = g(() => {
+      const t = m.value.map((o, a) => ({ p: o, idx: a }));
+      return t.sort((o, a) => o.p.row === a.p.row ? (o.p.col || 0) - (a.p.col || 0) : (o.p.row || 0) - (a.p.row || 0)), t.map((o) => o.idx);
+    }), v = O(-1), b = O(-1), $ = R(null), h = R(null);
+    let A = null, L = null;
+    const Z = g(() => {
+      const t = Y.value;
       return {
         display: "grid",
         gridTemplateColumns: (t == null ? void 0 : t.colTemplate) || `repeat(${(t == null ? void 0 : t.cols) || 2}, 1fr)`,
         gridTemplateRows: (t == null ? void 0 : t.rowTemplate) || `repeat(${(t == null ? void 0 : t.rows) || 2}, 1fr)`,
         gap: "4px",
-        width: o.width || "100%",
-        height: o.height || "100%"
+        width: e.width || "100%",
+        height: e.height || "100%"
       };
-    }), H = p(() => ({
-      width: o.width || "100%",
-      height: o.height || "100%"
+    }), tt = g(() => ({
+      width: e.width || "100%",
+      height: e.height || "100%"
     }));
-    function W(t) {
-      const e = t, a = G.value[e];
-      if (S.value[a]) return "";
-      if (Array.isArray(o.placeholders) && o.placeholders[a] !== void 0)
-        return String(o.placeholders[a]);
-      if (typeof o.placeholderText == "function")
+    function et(t) {
+      const o = t, a = F.value[o];
+      if (Array.isArray(e.placeholders) && e.placeholders[a] !== void 0)
+        return String(e.placeholders[a]);
+      if (typeof e.placeholderText == "function")
         try {
-          return o.placeholderText(e);
+          return e.placeholderText(o);
         } catch {
-          return String(e + 1);
+          return String(o + 1);
         }
-      return o.placeholderText ? String(o.placeholderText) : String(e + 1);
+      return e.placeholderText ? String(e.placeholderText) : String(o + 1);
     }
-    function q(t) {
-      const e = b.value[t];
-      return !e || typeof e.col != "number" || typeof e.row != "number" ? {} : {
-        gridColumn: `${e.col} / span ${e.colSpan}`,
-        gridRow: `${e.row} / span ${e.rowSpan}`
+    function ot(t) {
+      const o = m.value[t];
+      return !o || typeof o.col != "number" || typeof o.row != "number" ? {} : {
+        gridColumn: `${o.col} / span ${o.colSpan}`,
+        gridRow: `${o.row} / span ${o.rowSpan}`
       };
     }
-    function J(t) {
-      const e = b.value[t];
-      return (e == null ? void 0 : e.isMain) || !1;
+    function rt(t) {
+      const o = m.value[t];
+      return (o == null ? void 0 : o.isMain) || !1;
     }
-    function K(t) {
-      h.value = t, C("layoutChange", h.value);
+    function at(t) {
+      p.value = t, x("layoutChange", p.value);
     }
-    function m() {
-      if (f.value && document.body.contains(f.value)) {
+    function B() {
+      if ($.value && document.body.contains($.value)) {
         try {
-          document.body.removeChild(f.value);
+          document.body.removeChild($.value);
         } catch (t) {
           console.warn("[VideoGridLayout] Failed to cleanup drag image:", t);
         }
-        f.value = null;
+        $.value = null;
       }
+      if (h.value && document.body.contains(h.value)) {
+        try {
+          document.body.removeChild(h.value);
+        } catch {
+        }
+        h.value = null;
+      }
+      A && (document.removeEventListener("mousemove", A), A = null), L && (document.removeEventListener("drag", L), L = null);
     }
-    function Q(t, e) {
-      if (e < 0 || e >= s.value.length) {
-        console.warn("[VideoGridLayout] Invalid drag index:", e);
+    function lt(t, o) {
+      if (o < 0 || o >= y.value.length) {
+        console.warn("[VideoGridLayout] Invalid drag index:", o);
         return;
       }
-      if (w.value = e, !t.dataTransfer) return;
+      if (v.value = o, !t.dataTransfer) return;
       t.dataTransfer.effectAllowed = "move";
       const r = t.target.closest(".video-item");
       if (r)
         try {
-          m();
+          if (B(), t.dataTransfer) {
+            t.dataTransfer.effectAllowed = "move";
+            const l = new Image();
+            l.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", t.dataTransfer.setDragImage(l, 0, 0);
+          }
           const n = r.cloneNode(!0);
-          n.style.width = `${r.offsetWidth}px`, n.style.height = `${r.offsetHeight}px`, n.style.opacity = Vt, n.style.position = "absolute", n.style.top = "-9999px", n.style.pointerEvents = "none", document.body.appendChild(n), f.value = n, t.dataTransfer.setDragImage(n, r.offsetWidth / 2, r.offsetHeight / 2), setTimeout(() => {
-            m();
-          }, 100), r.style.opacity = String(At), r.style.cursor = Bt;
+          n.querySelectorAll(".progress-bar, .play-button").forEach((l) => l.remove()), n.querySelectorAll('[style*="transition"], [style*="animation"], .video-icon').forEach((l) => {
+            try {
+              l.style.transition = "none", l.style.animation = "none";
+            } catch {
+            }
+          }), n.style.position = "fixed", n.style.margin = "0", n.style.pointerEvents = "none", n.style.opacity = Nt, n.style.zIndex = "9999", document.body.appendChild(n), h.value = n;
+          try {
+            const l = r.getBoundingClientRect();
+            n.style.width = `${l.width}px`, n.style.height = `${l.height}px`;
+          } catch {
+          }
+          A = (l) => {
+            if (!h.value) return;
+            const f = h.value.offsetWidth || 0, T = h.value.offsetHeight || 0, G = Math.max(0, l.clientX - f / 2), M = Math.max(0, l.clientY - T / 2);
+            h.value.style.left = `${G}px`, h.value.style.top = `${M}px`;
+          }, document.addEventListener("mousemove", A), L = (l) => {
+            if (!h.value) return;
+            const f = h.value.offsetWidth || 0, T = h.value.offsetHeight || 0, G = Math.max(0, (l.clientX || 0) - f / 2), M = Math.max(0, (l.clientY || 0) - T / 2);
+            h.value.style.left = `${G}px`, h.value.style.top = `${M}px`;
+          }, document.addEventListener("drag", L), r.style.opacity = String(Ot), r.style.cursor = Rt, r.style.borderColor = "#ff6b6b";
         } catch (n) {
-          console.error("[VideoGridLayout] Drag start error:", n), m();
+          console.error("[VideoGridLayout] Drag start error:", n), B();
         }
     }
-    function X(t, e) {
+    function nt(t, o) {
       t.preventDefault(), t.stopPropagation();
-      const a = w.value;
-      if (a === -1 || a === e) {
-        w.value = -1;
+      const a = v.value;
+      if (a === -1 || a === o) {
+        v.value = -1;
         return;
       }
-      if (e < 0 || e >= s.value.length) {
-        console.warn("[VideoGridLayout] Invalid drop index:", e), w.value = -1;
+      if (o < 0 || o >= m.value.length) {
+        console.warn("[VideoGridLayout] Invalid drop index:", o), v.value = -1;
         return;
       }
       try {
-        const r = s.value[a], n = s.value[e];
-        if (r && n) {
-          D = !0;
-          const u = [...s.value];
-          u[a] = n, u[e] = r, s.value = u, setTimeout(() => {
-            D = !1, C("videosChange", s.value);
-          }, 0);
-        }
+        const r = t.currentTarget;
+        r && (r.style.backgroundColor = "rgba(66, 184, 131, 0.3)", r.style.borderColor = "#42b883", setTimeout(() => {
+          r.style.backgroundColor = "", r.style.borderColor = "";
+        }, 200));
+        const n = [...y.value], w = n[a], u = n[o];
+        n[a] = u, n[o] = w, E = !0, y.value = n, setTimeout(() => {
+          E = !1, x("videosChange", y.value.filter(Boolean));
+        }, 0);
       } catch (r) {
         console.error("[VideoGridLayout] Drop error:", r);
       } finally {
-        w.value = -1;
+        v.value = -1;
       }
     }
-    function Z(t, e) {
-      t.preventDefault(), w.value !== -1 && w.value !== e && (x.value = e);
+    function ct(t, o) {
+      t.preventDefault(), v.value !== -1 && v.value !== o && (b.value = o);
     }
-    function tt(t, e) {
+    function it(t, o) {
       t.preventDefault();
       const a = t.target, r = t.relatedTarget;
-      a.contains(r) || x.value === e && (x.value = -1);
+      a.contains(r) || b.value === o && (b.value = -1);
     }
-    function ot(t) {
+    function st(t) {
       const a = t.target.closest(".video-item");
-      a && (a.style.opacity = "1", a.style.cursor = "move"), m(), w.value = -1, x.value = -1;
+      a && (a.style.opacity = "1", a.style.cursor = "move", a.style.borderColor = ""), B(), v.value = -1, b.value = -1;
     }
-    return et(() => {
-      m();
-    }), (t, e) => (i(), c("div", {
+    return dt(() => {
+      B();
+    }), (t, o) => (s(), i("div", {
       class: "video-grid-layout",
       role: "application",
       "aria-label": "视频分屏布局",
-      style: _(H.value)
+      style: N(tt.value)
     }, [
-      l.showToolbar ? (i(), c("div", xt, [
-        e[1] || (e[1] = d("div", { class: "toolbar-title" }, "分屏布局", -1)),
-        d("div", ft, [
-          (i(!0), c(O, null, E(Y.value, (a) => {
-            var r, n, u;
-            return i(), c("button", {
+      c.showToolbar ? (s(), i("div", Bt, [
+        o[1] || (o[1] = d("div", { class: "toolbar-title" }, "分屏布局", -1)),
+        d("div", It, [
+          (s(!0), i(U, null, z(K.value, (a) => {
+            var r, n, w;
+            return s(), i("button", {
               key: a,
-              class: M(["layout-btn", { active: h.value === a }]),
-              onClick: (L) => K(a),
-              title: ((r = A(g)[a]) == null ? void 0 : r.label) || "",
-              "aria-label": `切换到${((n = A(g)[a]) == null ? void 0 : n.label) || ""}布局`,
-              "aria-pressed": h.value === a,
+              class: j(["layout-btn", { active: p.value === a }]),
+              onClick: (u) => at(a),
+              title: ((r = P(C)[a]) == null ? void 0 : r.label) || "",
+              "aria-label": `切换到${((n = P(C)[a]) == null ? void 0 : n.label) || ""}布局`,
+              "aria-pressed": p.value === a,
               type: "button"
             }, [
-              rt(U, { type: a }, null, 8, ["type"]),
-              d("span", bt, R(((u = A(g)[a]) == null ? void 0 : u.label) || ""), 1)
-            ], 10, mt);
+              ht(J, { type: a }, null, 8, ["type"]),
+              d("span", Et, q(((w = P(C)[a]) == null ? void 0 : w.label) || ""), 1)
+            ], 10, _t);
           }), 128))
         ])
-      ])) : P("", !0),
-      d("div", Dt, [
+      ])) : X("", !0),
+      d("div", Vt, [
         d("div", {
           class: "video-grid",
-          style: _(z.value)
+          style: N(Z.value)
         }, [
-          (i(!0), c(O, null, E(b.value, (a, r) => {
-            var n, u, L;
-            return i(), c("div", {
-              key: ((n = S.value[r]) == null ? void 0 : n.id) ?? r,
-              class: M(["video-item", {
-                "main-video": J(r),
-                dragging: w.value === r,
-                "drag-over": x.value === r && w.value !== r
+          (s(!0), i(U, null, z(m.value, (a, r) => {
+            var n, w, u;
+            return s(), i("div", {
+              key: ((n = D.value[r]) == null ? void 0 : n.id) ?? r,
+              class: j(["video-item", {
+                "main-video": rt(r),
+                dragging: v.value === r,
+                "drag-over": b.value === r && v.value !== r
               }]),
-              style: _(q(r)),
+              style: N(ot(r)),
               draggable: !0,
-              "aria-label": `视频 ${r + 1}: ${((u = S.value[r]) == null ? void 0 : u.title) || ((L = S.value[r]) == null ? void 0 : L.id) || ""}`,
+              "aria-label": `视频 ${r + 1}: ${((w = D.value[r]) == null ? void 0 : w.title) || ((u = D.value[r]) == null ? void 0 : u.id) || ""}`,
               role: "article",
               tabindex: "0",
-              onDragstart: (y) => Q(y, r),
-              onDragover: e[0] || (e[0] = at(() => {
+              onDragstart: (l) => lt(l, r),
+              onDragover: o[0] || (o[0] = wt(() => {
               }, ["prevent"])),
-              onDragenter: (y) => Z(y, r),
-              onDragleave: (y) => tt(y, r),
-              onDrop: (y) => X(y, r),
-              onDragend: ot
+              onDragenter: (l) => ct(l, r),
+              onDragleave: (l) => it(l, r),
+              onDrop: (l) => nt(l, r),
+              onDragend: st
             }, [
-              lt(t.$slots, "video", {
-                video: S.value[r],
+              ut(t.$slots, "video", {
+                video: D.value[r],
                 index: r
               }, () => [
-                S.value[r] ? (i(), c("div", _t)) : (i(), c("div", $t, [
-                  d("div", It, R(W(G.value.indexOf(r))), 1)
-                ]))
+                d("div", Gt, [
+                  d("div", Mt, q(et(F.value.indexOf(r))), 1)
+                ])
               ], !0)
-            ], 46, Lt);
+            ], 46, Tt);
           }), 128))
         ], 4)
       ])
     ], 4));
   }
-}), Tt = /* @__PURE__ */ F(Gt, [["__scopeId", "data-v-473a71fa"]]), Ot = {
-  VideoGridLayout: Tt,
-  VideoLayoutIcon: U
-}, Mt = {
-  install(l) {
-    Object.entries(Ot).forEach(([v, o]) => {
-      l.component(v, o);
+}), Ht = /* @__PURE__ */ Q(Pt, [["__scopeId", "data-v-f0958f8e"]]), Yt = {
+  VideoGridLayout: Ht,
+  VideoLayoutIcon: J
+}, Ut = {
+  install(c) {
+    Object.entries(Yt).forEach(([k, e]) => {
+      c.component(k, e);
     });
   }
 };
 export {
-  g as LAYOUT_CONFIGS,
-  Tt as VideoGridLayout,
-  U as VideoLayoutIcon,
-  Mt as default,
-  ct as getAllLayoutTypes,
-  nt as getLayoutPositions
+  C as LAYOUT_CONFIGS,
+  Ht as VideoGridLayout,
+  J as VideoLayoutIcon,
+  Ut as default,
+  vt as getAllLayoutTypes,
+  pt as getLayoutPositions
 };

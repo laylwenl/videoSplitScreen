@@ -1,6 +1,6 @@
 {
   "name": "video-split-screen",
-  "version": "1.0.1",
+  "version": "1.0.14",
   "description": "Vue 3 视频分屏组件（VideoSplitScreen）",
   "keywords": [
     "vue",
@@ -29,7 +29,9 @@
   "scripts": {
     "build": "vite build",
     "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
-    "prepare": "npm run build && npm run build:types"
+    "prepare": "npm run build && npm run build:types",
+    "dev": "vite",
+    "example": "cd example && npm run dev"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
@@ -40,5 +42,3 @@
     "typescript": "^5.0.0"
   }
 }
-
-
