@@ -1,0 +1,45 @@
+{
+  "name": "video-split-screen",
+  "version": "1.0.0",
+  "description": "Vue 3 视频分屏组件（VideoSplitScreen）",
+  "keywords": [
+    "vue",
+    "vue3",
+    "video",
+    "split-screen",
+    "video-grid",
+    "monitoring"
+  ],
+  "author": "Yojack",
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "prepare": "npm run build && npm run build:types"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "vue3",
+    "video",
+    "split-screen"
+  ]
+}
+
+
