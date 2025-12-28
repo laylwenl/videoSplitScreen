@@ -1,6 +1,6 @@
 {
   "name": "video-split-screen",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Vue 3 视频分屏组件（VideoSplitScreen）",
   "keywords": [
     "vue",
