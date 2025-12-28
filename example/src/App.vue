@@ -205,8 +205,7 @@ import { VideoGridLayout } from 'video-split-screen'
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import VideoGridLayout from '../../src/components/VideoGridLayout.vue'
-import type { LayoutType } from '../../src/types'
+import { VideoGridLayout, type LayoutType } from 'video-split-screen'
 import VideoPlayer from './components/VideoPlayer.vue'
 
 // 示例视频数据
